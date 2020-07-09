@@ -4,7 +4,7 @@ However Proj.NET does ship with a comma-separated file with EPSG codes, and you 
 
 Below is a simple class for loading a coordinate system by SRID.
 
-{{
+```cs
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -56,12 +56,12 @@ public class SridReader
 		return null;
 	}
 }
-}}
+```
 
 Loading a CS by ID is then as simple as:
-{{
+```cs
 ICoordinateSystem cs = SridReader.GetCSbyID(4326);
-}}
+```
 
 The demo website also shows how to use this approach.
 

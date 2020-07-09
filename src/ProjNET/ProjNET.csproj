@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <RootNamespace>ProjNET</RootNamespace>
+    <AssemblyName>ProjNET</AssemblyName>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Company>Morten Nielsen</Company>
+    <Version>1.2.0</Version>
+    <Authors>Morten Nielsen</Authors>
+    <Description></Description>
+    <Copyright>© Morten Nielsen 2005-2009</Copyright>
+    <PackageTags>Projection, Coordinate Systems, GIS</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/dotMorten/ProjNET</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/dotMorten/ProjNET</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <RepositoryType>git</RepositoryType>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>

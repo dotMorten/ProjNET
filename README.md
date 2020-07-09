@@ -5,14 +5,14 @@ Beyond that, this project isn't currently maintained.
 ## .NET Spatial Reference and Projection Engine
 Proj.NET performs point-to-point coordinate conversions between geodetic coordinate systems for use in fx. Geographic Information Systems (GIS) or GPS applications. The spatial reference model used adheres to the [Simple Features specification](http://www.opengeospatial.org/standards/sfo).
 
-* [Read the FAQ](FAQ) for common questions.
-* [Popular Well-Known Text representations for Spatial Reference Systems](CommonWellKnownText)
+* [Read the FAQ](Docs/README.md) for common questions.
+* [Popular Well-Known Text representations for Spatial Reference Systems](Docs/Well-Known%20Text.md)
 
 ### Supports
 * Datum transformations
 * Geographic, Geocentric, and Projected coordinate systems
 * .NET Standard 1.0, so will run with any .NET Standard 1.0 complaint framework (ie all of them!)
-* Converts coordinate systems to/from [Well-Known Text](Well-Known-Text) (WKT) and to XML
+* Converts coordinate systems to/from [Well-Known Text](Docs/Well-Known%20Text.md) (WKT) and to XML
 
 ### Projection types currently supported
 * Mercator
@@ -20,7 +20,7 @@ Proj.NET performs point-to-point coordinate conversions between geodetic coordin
 * Albers
 * Lambert Conformal
 * Krovak
-See [Supported projections](Supported-projections) for details.
+See [Supported projections](Docs/Supported%20projections.md) for details.
 
 ### Nuget
 There's also a package available in the Nuget Gallery, created by Mathieu Cartoixa [Proj.NET 1.2](https://nuget.org/packages/ProjNet)

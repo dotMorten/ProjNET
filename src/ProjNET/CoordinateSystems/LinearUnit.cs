@@ -144,9 +144,9 @@ namespace ProjNet.CoordinateSystems
 		/// <returns>True if equal</returns>
 		public override bool EqualParams(object obj)
 		{
-			if (!(obj is LinearUnit))
+			if (!(obj is LinearUnit li))
 				return false;
-			return (obj as LinearUnit).MetersPerUnit == this.MetersPerUnit;
+			return li.MetersPerUnit == this.MetersPerUnit;
 		}		
 	}
 }

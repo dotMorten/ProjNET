@@ -59,14 +59,14 @@ namespace ProjNet.CoordinateSystems.Transformations
             else if (sourceCS is IGeocentricCoordinateSystem && targetCS is IGeographicCoordinateSystem) //Geocentric -> Geographic
 				trans = Geoc2Geog((IGeocentricCoordinateSystem)sourceCS, (IGeographicCoordinateSystem)targetCS);
 
-            else if (sourceCS is IProjectedCoordinateSystem && targetCS is IProjectedCoordinateSystem) //Projected -> Projected
-				trans = Proj2Proj((sourceCS as IProjectedCoordinateSystem), (targetCS as IProjectedCoordinateSystem));
+            else if (sourceCS is IProjectedCoordinateSystem p1 && targetCS is IProjectedCoordinateSystem p2) //Projected -> Projected
+				trans = Proj2Proj(p1, p2);
 
-            else if (sourceCS is IGeocentricCoordinateSystem && targetCS is IGeocentricCoordinateSystem) //Geocentric -> Geocentric
-				trans = CreateGeoc2Geoc((IGeocentricCoordinateSystem)sourceCS, (IGeocentricCoordinateSystem)targetCS);
+            else if (sourceCS is IGeocentricCoordinateSystem gcs1 && targetCS is IGeocentricCoordinateSystem gcs2) //Geocentric -> Geocentric
+				trans = CreateGeoc2Geoc(gcs1, gcs2);
 
             else if (sourceCS is IGeographicCoordinateSystem && targetCS is IGeographicCoordinateSystem) //Geographic -> Geographic
-				trans = CreateGeog2Geog(sourceCS as IGeographicCoordinateSystem, targetCS as IGeographicCoordinateSystem);
+				trans = CreateGeog2Geog((IGeographicCoordinateSystem)sourceCS, (IGeographicCoordinateSystem)targetCS);
 			else
 				throw new NotSupportedException("No support for transforming between the two specified coordinate systems");
 			
@@ -85,8 +85,8 @@ namespace ProjNet.CoordinateSystems.Transformations
 		{
 			foreach(ICoordinateTransformation t in mtrans.CoordinateTransformationList)
 			{
-				if(t is ConcatenatedTransform)
-					SimplifyTrans(t as ConcatenatedTransform, ref MTs);
+				if(t is ConcatenatedTransform ct)
+					SimplifyTrans(ct, ref MTs);
 				else
 					MTs.Add(t);
 			}			
@@ -251,7 +251,7 @@ namespace ProjNet.CoordinateSystems.Transformations
 			parameterList.Add(new ProjectionParameter("semi_major", ellipsoid.SemiMajorAxis));
 			parameterList.Add(new ProjectionParameter("semi_minor", ellipsoid.SemiMinorAxis));
 			parameterList.Add(new ProjectionParameter("unit", unit.MetersPerUnit));
-			IMathTransform transform = null;
+			IMathTransform? transform = null;
 			switch (projection.ClassName.ToLowerInvariant().Replace(' ', '_'))
 			{
 				case "mercator":

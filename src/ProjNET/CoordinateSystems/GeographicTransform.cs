@@ -134,9 +134,8 @@ namespace ProjNet.CoordinateSystems
 		/// <returns>True if equal</returns>
 		public override bool EqualParams(object obj)
 		{
-			if (!(obj is GeographicTransform))
+			if (!(obj is GeographicTransform gt))
 				return false;
-			GeographicTransform gt = obj as GeographicTransform;
 			return gt.SourceGCS.EqualParams(this.SourceGCS) && gt.TargetGCS.EqualParams(this.TargetGCS);
 		}
 		#endregion

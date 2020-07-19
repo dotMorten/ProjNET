@@ -30,7 +30,7 @@ namespace ProjNet.CoordinateSystems.Transformations
 	/// </summary>
 	internal class DatumTransform : MathTransform
 	{
-		protected IMathTransform _inverse;
+		protected IMathTransform? _inverse;
 		private Wgs84ConversionInfo _ToWgs94;
 		double[] v;
 

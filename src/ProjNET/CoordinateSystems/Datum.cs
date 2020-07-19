@@ -78,9 +78,9 @@ namespace ProjNet.CoordinateSystems
 		/// <returns>True if equal</returns>
 		public override bool EqualParams(object obj)
 		{
-			if (!(obj is Ellipsoid))
+			if (!(obj is Datum d))
 				return false;
-			return (obj as Datum).DatumType == this.DatumType;
+			return d.DatumType == this.DatumType;
 		}
 	}
 }

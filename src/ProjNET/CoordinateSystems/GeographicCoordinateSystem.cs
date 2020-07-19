@@ -118,12 +118,12 @@ namespace ProjNet.CoordinateSystems
 		/// </summary>
 		public int NumConversionToWGS84
 		{
-			get { return _WGS84ConversionInfo.Count; }
+			get { return _WGS84ConversionInfo?.Count ?? 0; }
 		}
 
-		private List<Wgs84ConversionInfo> _WGS84ConversionInfo;
+		private List<Wgs84ConversionInfo>? _WGS84ConversionInfo;
 		
-		internal List<Wgs84ConversionInfo> WGS84ConversionInfo
+		internal List<Wgs84ConversionInfo>? WGS84ConversionInfo
 		{
 			get { return _WGS84ConversionInfo; }
 			set { _WGS84ConversionInfo = value; }
@@ -134,6 +134,8 @@ namespace ProjNet.CoordinateSystems
 		/// </summary>
 		public Wgs84ConversionInfo GetWgs84ConversionInfo(int index)
 		{
+			if (_WGS84ConversionInfo == null)
+				throw new ArgumentOutOfRangeException(nameof(index));
 			return _WGS84ConversionInfo[index];
 		}
 
@@ -188,9 +190,8 @@ namespace ProjNet.CoordinateSystems
 		/// <returns>True if equal</returns>
 		public override bool EqualParams(object obj)	
 		{
-			if (!(obj is GeographicCoordinateSystem))
+			if (!(obj is GeographicCoordinateSystem gcs))
 				return false;
-			GeographicCoordinateSystem gcs = obj as GeographicCoordinateSystem;
 			if (gcs.Dimension != this.Dimension) return false;
 			if (this.WGS84ConversionInfo != null && gcs.WGS84ConversionInfo == null) return false;
 			if (this.WGS84ConversionInfo == null && gcs.WGS84ConversionInfo != null) return false;

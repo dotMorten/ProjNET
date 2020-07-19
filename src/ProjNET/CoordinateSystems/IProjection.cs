@@ -57,6 +57,6 @@ namespace ProjNet.CoordinateSystems
 		/// <remarks>The parameter name is case insensitive</remarks>
 		/// <param name="name">Name of parameter</param>
 		/// <returns>parameter or null if not found</returns>
-		ProjectionParameter GetParameter(string name);
+		ProjectionParameter? GetParameter(string name);
 	}
 }

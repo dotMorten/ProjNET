@@ -35,14 +35,13 @@ namespace ProjNet.CoordinateSystems
 		internal GeocentricCoordinateSystem(IHorizontalDatum datum, ILinearUnit linearUnit, IPrimeMeridian primeMeridian, List<AxisInfo> axisinfo,
 			string name, string authority, long code, string alias, 
 			string remarks, string abbreviation)
-			: base(name, authority, code, alias, abbreviation, remarks)
+			: base(name, authority, code, alias, abbreviation, remarks, axisinfo)
 		{
 			_HorizontalDatum = datum;
 			_LinearUnit = linearUnit;
 			_Primemeridan = primeMeridian;
 			if (axisinfo.Count != 3)
 				throw new ArgumentException("Axis info should contain three axes for geocentric coordinate systems");
-			base.AxisInfo = axisinfo;
 		}
 
 		#region Predefined geographic coordinate systems
@@ -162,9 +161,8 @@ namespace ProjNet.CoordinateSystems
 		/// <returns>True if equal</returns>
 		public override bool EqualParams(object obj)
 		{
-			if (!(obj is GeocentricCoordinateSystem))
+			if (!(obj is GeocentricCoordinateSystem gcc))
 				return false;
-			GeocentricCoordinateSystem gcc = obj as GeocentricCoordinateSystem;
 			return gcc.HorizontalDatum.EqualParams(this.HorizontalDatum) &&
 				gcc.LinearUnit.EqualParams(this.LinearUnit) &&
 				gcc.PrimeMeridian.EqualParams(this.PrimeMeridian);

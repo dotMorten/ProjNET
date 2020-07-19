@@ -61,7 +61,7 @@ namespace ProjNet.Converters.WellKnownText
 		/// <exception cref="System.ArgumentException">If a token is not recognised.</exception>
 		public static IInfo Parse(string wkt)
 		{
-			IInfo returnObject = null;
+			IInfo? returnObject = null;
 			using (StringReader reader = new StringReader(wkt))
 			{
 				WktStreamTokenizer tokenizer = new WktStreamTokenizer(reader);
@@ -440,7 +440,7 @@ namespace ProjNet.Converters.WellKnownText
 				axes.Add(new AxisInfo("X", AxisOrientationEnum.East));
 				axes.Add(new AxisInfo("Y", AxisOrientationEnum.North));
 			}
-			IProjectedCoordinateSystem projectedCS = new ProjectedCoordinateSystem(geographicCS.HorizontalDatum, geographicCS, unit as LinearUnit, projection, axes, name, authority, authorityCode, String.Empty, String.Empty, String.Empty);
+			IProjectedCoordinateSystem projectedCS = new ProjectedCoordinateSystem(geographicCS, (LinearUnit)unit, projection, axes, name, authority, authorityCode, String.Empty, String.Empty, String.Empty);
 			return projectedCS;
 		}
 
@@ -511,7 +511,7 @@ namespace ProjNet.Converters.WellKnownText
 		private static IHorizontalDatum ReadHorizontalDatum(WktStreamTokenizer tokenizer)
 		{
 			//DATUM["OSGB 1936",SPHEROID["Airy 1830",6377563.396,299.3249646,AUTHORITY["EPSG","7001"]],TOWGS84[0,0,0,0,0,0,0],AUTHORITY["EPSG","6277"]]
-			Wgs84ConversionInfo wgsInfo = null;
+			Wgs84ConversionInfo? wgsInfo = null;
 			string authority = String.Empty;
 			long authorityCode = -1;
 

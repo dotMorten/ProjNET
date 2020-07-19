@@ -81,12 +81,12 @@ namespace ProjNet.CoordinateSystems
 		}
 
 		/// <summary>
-		/// Gets an named parameter of the projection.
+		/// Gets a named parameter of the projection.
 		/// </summary>
 		/// <remarks>The parameter name is case insensitive</remarks>
 		/// <param name="name">Name of parameter</param>
 		/// <returns>parameter or null if not found</returns>
-		public ProjectionParameter GetParameter(string name)
+		public ProjectionParameter? GetParameter(string name)
 		{
 			foreach (ProjectionParameter par in _Parameters)
 				if (par.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
@@ -146,14 +146,13 @@ namespace ProjNet.CoordinateSystems
 		/// <returns>True if equal</returns>
 		public override bool EqualParams(object obj)
 		{
-			if (!(obj is Projection))
+			if (!(obj is Projection proj))
 				return false;
-			Projection proj = obj as Projection;
 			if (proj.NumParameters != this.NumParameters)
 				return false;
 			for (int i = 0; i < _Parameters.Count; i++)
 			{
-				ProjectionParameter param = GetParameter(proj.GetParameter(i).Name);
+				ProjectionParameter? param = GetParameter(proj.GetParameter(i).Name);
 				if (param == null)
 					return false;
 				if (param.Value != proj.GetParameter(i).Value)

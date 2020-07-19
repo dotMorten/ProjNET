@@ -35,31 +35,31 @@ namespace ProjNet.CoordinateSystems
 	public interface IInfo
 	{
 		/// <summary>
-		/// Gets or sets the name of the object.
+		/// Gets the name of the object.
 		/// </summary>
-		string Name { get; }
+		string? Name { get; }
 		/// <summary>
-		/// Gets or sets the authority name for this object, e.g., “POSC”,
+		/// Gets the authority name for this object, e.g., “POSC”,
 		/// is this is a standard object with an authority specific
 		/// identity code. Returns “CUSTOM” if this is a custom object.
 		/// </summary>
-		string Authority { get; }
+		string? Authority { get; }
 		/// <summary>
-		/// Gets or sets the authority specific identification code of the object
+		/// Gets the authority specific identification code of the object
 		/// </summary>
 		long AuthorityCode { get; }
 		/// <summary>
-		/// Gets or sets the alias of the object.
+		/// Getsthe alias of the object.
 		/// </summary>
-		string Alias { get; }
+		string? Alias { get; }
 		/// <summary>
-		/// Gets or sets the abbreviation of the object.
+		/// Gets the abbreviation of the object.
 		/// </summary>
-		string Abbreviation { get; }
+		string? Abbreviation { get; }
 		/// <summary>
-		/// Gets or sets the provider-supplied remarks for the object.
+		/// Getsthe provider-supplied remarks for the object.
 		/// </summary>
-		string Remarks { get; }
+		string? Remarks { get; }
 		/// <summary>
 		/// Returns the Well-known text for this spatial reference object
 		/// as defined in the simple features specification.

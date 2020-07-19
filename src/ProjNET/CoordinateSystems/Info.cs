@@ -70,25 +70,25 @@ namespace ProjNet.CoordinateSystems
 
 		#region ISpatialReferenceInfo Members
 
-		private string _Name;
+		private string? _Name;
 
 		/// <summary>
 		/// Gets or sets the name of the object.
 		/// </summary>
-		public string Name
+		public string? Name
 		{
 			get { return _Name; }
 			set { _Name = value; }
 		}
 
-		private string _Authority;
+		private string? _Authority;
 
 		/// <summary>
 		/// Gets or sets the authority name for this object, e.g., "EPSG",
 		/// is this is a standard object with an authority specific
 		/// identity code. Returns "CUSTOM" if this is a custom object.
 		/// </summary>
-		public string Authority
+		public string? Authority
 		{
 			get { return _Authority; }
 			set { _Authority = value; }
@@ -105,34 +105,34 @@ namespace ProjNet.CoordinateSystems
 			set { _Code = value; }
 		}
 
-		private string _Alias;
+		private string? _Alias;
 
 		/// <summary>
 		/// Gets or sets the alias of the object.
 		/// </summary>
-		public string Alias
+		public string? Alias
 		{
 			get { return _Alias; }
 			set { _Alias = value; }
 		}
 
-		private string _Abbreviation;
+		private string? _Abbreviation;
 
 		/// <summary>
 		/// Gets or sets the abbreviation of the object.
 		/// </summary>
-		public string Abbreviation
+		public string? Abbreviation
 		{
 			get { return _Abbreviation; }
 			set { _Abbreviation = value; }
 		}
 
-		private string _Remarks;
+		private string? _Remarks;
 
 		/// <summary>
 		/// Gets or sets the provider-supplied remarks for the object.
 		/// </summary>
-		public string Remarks
+		public string? Remarks
 		{
 			get { return _Remarks; }
 			set { _Remarks = value; }

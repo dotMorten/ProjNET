@@ -35,7 +35,6 @@ namespace ProjNet.CoordinateSystems
 		/// <summary>
 		/// Initializes a new instance of a projected coordinate system
 		/// </summary>
-		/// <param name="datum">Horizontal datum</param>
 		/// <param name="geographicCoordinateSystem">Geographic coordinate system</param>
 		/// <param name="linearUnit">Linear unit</param>
 		/// <param name="projection">Projection</param>
@@ -46,11 +45,11 @@ namespace ProjNet.CoordinateSystems
 		/// <param name="alias">Alias</param>
 		/// <param name="abbreviation">Abbreviation</param>
 		/// <param name="remarks">Provider-supplied remarks</param>
-		internal ProjectedCoordinateSystem(IHorizontalDatum datum, IGeographicCoordinateSystem geographicCoordinateSystem,
+		internal ProjectedCoordinateSystem(IGeographicCoordinateSystem geographicCoordinateSystem,
 			ILinearUnit linearUnit, IProjection projection, List<AxisInfo> axisInfo,
 			string name, string authority, long code, string alias,
 			string remarks, string abbreviation)
-			: base(datum, axisInfo, name, authority, code, alias, abbreviation, remarks)
+			: base(geographicCoordinateSystem.HorizontalDatum, axisInfo, name, authority, code, alias, abbreviation, remarks)
 		{
 			_GeographicCoordinateSystem = geographicCoordinateSystem;
 			_LinearUnit = linearUnit;
@@ -79,8 +78,7 @@ namespace ProjNet.CoordinateSystems
 			System.Collections.Generic.List<AxisInfo> axes = new List<AxisInfo>();
 			axes.Add(new AxisInfo("East", AxisOrientationEnum.East));
 			axes.Add(new AxisInfo("North", AxisOrientationEnum.North));
-			return new ProjectedCoordinateSystem(ProjNet.CoordinateSystems.HorizontalDatum.WGS84,
-				ProjNet.CoordinateSystems.GeographicCoordinateSystem.WGS84, ProjNet.CoordinateSystems.LinearUnit.Metre, proj, axes,
+			return new ProjectedCoordinateSystem(ProjNet.CoordinateSystems.GeographicCoordinateSystem.WGS84, ProjNet.CoordinateSystems.LinearUnit.Metre, proj, axes,
 				"WGS 84 / UTM zone " + Zone.ToString(System.Globalization.CultureInfo.InvariantCulture) + (ZoneIsNorth ? "N" : "S"), "EPSG", 32600 + Zone + (ZoneIsNorth ? 0 : 100),
 				String.Empty, "Large and medium scale topographic mapping and engineering survey.", string.Empty);
 		}
@@ -188,9 +186,8 @@ namespace ProjNet.CoordinateSystems
 		/// <returns>True if equal</returns>
 		public override bool EqualParams(object obj)
 		{
-			if (!(obj is ProjectedCoordinateSystem))
+			if (!(obj is ProjectedCoordinateSystem pcs))
 				return false;
-			ProjectedCoordinateSystem pcs = obj as ProjectedCoordinateSystem;
 			if(pcs.Dimension != this.Dimension)
 				return false;
 			for (int i = 0; i < pcs.Dimension; i++)

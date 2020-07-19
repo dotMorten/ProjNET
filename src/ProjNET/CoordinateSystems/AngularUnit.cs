@@ -145,9 +145,9 @@ namespace ProjNet.CoordinateSystems
 		/// <returns>True if equal</returns>
 		public override bool EqualParams(object obj)
 		{
-			if (!(obj is AngularUnit))
+			if (!(obj is AngularUnit au))
 				return false;
-			return (obj as AngularUnit).RadiansPerUnit == this.RadiansPerUnit;
+			return au.RadiansPerUnit == this.RadiansPerUnit;
 		}
 	}
 }

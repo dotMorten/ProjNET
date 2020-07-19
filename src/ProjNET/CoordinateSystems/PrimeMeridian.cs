@@ -210,9 +210,8 @@ namespace ProjNet.CoordinateSystems
 		/// <returns>True if equal</returns>
 		public override bool EqualParams(object obj)
 		{
-			if (!(obj is PrimeMeridian))
+			if (!(obj is PrimeMeridian prime))
 				return false;
-			PrimeMeridian prime = obj as PrimeMeridian;
 			return prime.AngularUnit.EqualParams(this.AngularUnit) && prime.Longitude == this.Longitude;
 		}
 

@@ -44,7 +44,7 @@ namespace ProjNet.CoordinateSystems
 		/// <param name="abbreviation">Abbreviation</param>
 		/// <param name="remarks">Provider-supplied remarks</param>
 		internal HorizontalDatum(
-			IEllipsoid ellipsoid, Wgs84ConversionInfo toWgs84, DatumType type,
+			IEllipsoid ellipsoid, Wgs84ConversionInfo? toWgs84, DatumType type,
 			string name, string authority, long code, string alias, string remarks, string abbreviation)
 			: base(type, name, authority, code, alias, remarks, abbreviation)
 		{
@@ -157,11 +157,11 @@ namespace ProjNet.CoordinateSystems
 			set { _Ellipsoid = value; }
 		}
 
-		Wgs84ConversionInfo _Wgs84ConversionInfo;
+		Wgs84ConversionInfo? _Wgs84ConversionInfo;
 		/// <summary>
 		/// Gets preferred parameters for a Bursa Wolf transformation into WGS84
 		/// </summary>
-		public Wgs84ConversionInfo Wgs84Parameters
+		public Wgs84ConversionInfo? Wgs84Parameters
 		{
 			get { return _Wgs84ConversionInfo; }
 			set { _Wgs84ConversionInfo = value; }
@@ -211,14 +211,12 @@ namespace ProjNet.CoordinateSystems
 		/// <returns>True if equal</returns>
 		public override bool EqualParams(object obj)
 		{
-			if (!(obj is HorizontalDatum))
+			if (!(obj is HorizontalDatum datum))
 				return false;
-			HorizontalDatum datum = obj as HorizontalDatum;
 			if (datum.Wgs84Parameters == null && this.Wgs84Parameters != null) return false;
 			if (datum.Wgs84Parameters != null && !datum.Wgs84Parameters.Equals(this.Wgs84Parameters))
 				return false;
-			return (datum != null && this.Ellipsoid != null &&
-				datum.Ellipsoid.EqualParams(this.Ellipsoid) || datum == null && this.Ellipsoid == null) && this.DatumType == datum.DatumType;
+			return (this.Ellipsoid != null && datum.Ellipsoid.EqualParams(this.Ellipsoid) || this.Ellipsoid == null) && this.DatumType == datum.DatumType;
 		}
 	}
 }

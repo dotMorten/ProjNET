@@ -54,8 +54,12 @@ namespace ProjNet.CoordinateSystems
 		/// <param name="alias">Alias</param>
 		/// <param name="abbreviation">Abbreviation</param>
 		/// <param name="remarks">Provider-supplied remarks</param>
-		internal CoordinateSystem(string name, string authority, long authorityCode, string alias, string abbreviation, string remarks)
-			: base (name, authority, authorityCode, alias,abbreviation, remarks) { }
+		/// <param name="axisInfo">axis info</param>
+		internal CoordinateSystem(string name, string authority, long authorityCode, string alias, string abbreviation, string remarks, List<AxisInfo> axisInfo)
+			: base(name, authority, authorityCode, alias, abbreviation, remarks)
+		{
+			_AxisInfo = axisInfo;
+		}
 
 		#region ICoordinateSystem Members
 
@@ -74,10 +78,10 @@ namespace ProjNet.CoordinateSystems
 		public abstract IUnit GetUnits(int dimension);
 
 		private List<AxisInfo> _AxisInfo;
+
 		internal List<AxisInfo> AxisInfo
 		{
 			get { return _AxisInfo; }
-			set { _AxisInfo = value; }
 		}
 
 
@@ -93,9 +97,6 @@ namespace ProjNet.CoordinateSystems
 			return _AxisInfo[dimension];
 		}
 
-
-        private double[] _DefaultEnvelope;
-
 		/// <summary>
 		/// Gets default envelope of coordinate system.
 		/// </summary>
@@ -106,11 +107,7 @@ namespace ProjNet.CoordinateSystems
 		/// (-180,-90) to (180,90), and a geocentric coordinate system could return a box from (-r,-r,-r)
 		/// to (+r,+r,+r) where r is the approximate radius of the Earth.
 		/// </remarks>
-        public double[] DefaultEnvelope
-		{
-			get { return _DefaultEnvelope; }
-			set { _DefaultEnvelope = value; }
-		}
+		public double[] DefaultEnvelope => throw new NotImplementedException();
 
 		#endregion
 	}

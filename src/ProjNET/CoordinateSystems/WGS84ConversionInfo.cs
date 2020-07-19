@@ -229,7 +229,7 @@ namespace ProjNet.CoordinateSystems
 		/// </summary>
 		/// <param name="obj"></param>
 		/// <returns></returns>
-		public override bool Equals(object obj)
+		public override bool Equals(object? obj)
 		{
 			return Equals(obj as Wgs84ConversionInfo);
 		}
@@ -252,7 +252,7 @@ namespace ProjNet.CoordinateSystems
 		/// </summary>
 		/// <param name="obj"></param>
 		/// <returns>True if equal</returns>
-		public bool Equals(Wgs84ConversionInfo obj)
+		public bool Equals(Wgs84ConversionInfo? obj)
 		{
 			if (obj == null)
 				return false;

@@ -33,7 +33,7 @@ namespace ProjNet.CoordinateSystems.Transformations
         /// <summary>
         /// 
         /// </summary>
-		protected IMathTransform _inverse;
+		protected IMathTransform? _inverse;
 
         /// <summary>
         /// 

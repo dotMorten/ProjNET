@@ -68,7 +68,7 @@ namespace ProjNet.CoordinateSystems.Transformations
         /// <summary>
         /// 
         /// </summary>
-		protected MathTransform _inverse;
+		protected MathTransform? _inverse;
 
 		/// <summary>
 		/// Initializes a geocentric projection object

@@ -64,7 +64,8 @@ namespace ProjNet.CoordinateSystems
 		/// <returns>The resulting spatial reference object</returns>
 		public ICoordinateSystem CreateFromWkt(string WKT)
 		{
-			return CoordinateSystemWktReader.Parse(WKT) as ICoordinateSystem;
+			var result = CoordinateSystemWktReader.Parse(WKT);
+			return result as ICoordinateSystem ?? throw new InvalidCastException($"Cannot parse {result.GetType().Name} to ICoordinateSystem");
 		}
 		
 		/// <summary>
@@ -174,7 +175,7 @@ namespace ProjNet.CoordinateSystems
 			List<AxisInfo> info = new List<AxisInfo>(2);
 			info.Add(axis0);
 			info.Add(axis1);
-			return new ProjectedCoordinateSystem(null, gcs, linearUnit, projection, info, name, String.Empty, -1, String.Empty, String.Empty, String.Empty);
+			return new ProjectedCoordinateSystem(gcs, linearUnit, projection, info, name, String.Empty, -1, String.Empty, String.Empty, String.Empty);
 		}
 
 		/// <summary>

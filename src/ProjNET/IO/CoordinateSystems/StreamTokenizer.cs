@@ -64,7 +64,7 @@ namespace ProjNet.Converters.WellKnownText.IO
 	{
 		TokenType _currentTokenType;
 		TextReader _reader;
-		string _currentToken;
+		string _currentToken = string.Empty;
 		bool _ignoreWhitespace = false;
 		int _lineNumber = 1;
 		int _colNumber = 1;
@@ -183,9 +183,9 @@ namespace ProjNet.Converters.WellKnownText.IO
 
 			bool isNumber = false;
 			bool isWord = false;
-			byte[] ba = null;
+			byte[]? ba = null;
 			UTF8Encoding AE = new UTF8Encoding();
-			char[] ascii = null;
+			char[]? ascii = null;
 			Char currentCharacter;
 			Char nextCharacter;
 			while (finished != 0)

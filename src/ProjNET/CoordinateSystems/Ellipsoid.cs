@@ -280,9 +280,8 @@ namespace ProjNet.CoordinateSystems
 		/// <returns>True if equal</returns>
 		public override bool EqualParams(object obj)
 		{
-			if (!(obj is Ellipsoid))
+			if (!(obj is Ellipsoid e))
 				return false;
-			Ellipsoid e = obj as Ellipsoid;
 			return (e.InverseFlattening == this.InverseFlattening &&
 					e.IsIvfDefinitive == this.IsIvfDefinitive &&
 					e.SemiMajorAxis == this.SemiMajorAxis &&

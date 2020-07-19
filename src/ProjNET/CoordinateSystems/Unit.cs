@@ -106,9 +106,9 @@ namespace ProjNet.CoordinateSystems
 		/// <returns>True if equal</returns>
 		public override bool EqualParams(object obj)
 		{
-			if (!(obj is Unit))
+			if (!(obj is Unit u))
 				return false;
-			return (obj as Unit).ConversionFactor == this.ConversionFactor;
+			return u.ConversionFactor == this.ConversionFactor;
 		}
     }
 }

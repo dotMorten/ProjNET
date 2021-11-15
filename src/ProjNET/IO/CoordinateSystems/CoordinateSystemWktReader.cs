@@ -184,7 +184,7 @@ namespace ProjNet.Converters.WellKnownText
 			tokenizer.NextToken();
 			string unitname = tokenizer.GetStringValue();
 			tokenizer.ReadToken("]");
-			switch (unitname.ToLowerInvariant())
+			switch (unitname.ToUpperInvariant())
 			{
 				case "DOWN": return new AxisInfo(axisName, AxisOrientationEnum.Down);
 				case "EAST": return new AxisInfo(axisName, AxisOrientationEnum.East);

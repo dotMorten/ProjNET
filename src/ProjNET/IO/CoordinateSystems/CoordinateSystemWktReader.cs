@@ -184,7 +184,6 @@ namespace ProjNet.Converters.WellKnownText
 			tokenizer.NextToken();
 			string unitname = tokenizer.GetStringValue();
 			tokenizer.ReadToken("]");
-			// changed to ToUpper as the individual cases are in UpperCase letters (mw201@bemessung.at, 211115)
 			switch (unitname.ToUpperInvariant())
 			{
 				case "DOWN": return new AxisInfo(axisName, AxisOrientationEnum.Down);
